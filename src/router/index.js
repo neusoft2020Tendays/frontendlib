@@ -5,12 +5,14 @@ import VueRouter from 'vue-router'
 // 首页区组件
 import HomeMain from "./../components/home/main.vue"
 import DepartmentMain from "./../components/department/main.vue"
+import AdminLogin from "./../components/admin/login.vue"
 
 Vue.use(VueRouter)
 
 const routes = [
 	{path:"/",name:"homemain",component:HomeMain},
-	{path:"/department",name:"departmentmain",component:DepartmentMain}
+	{path:"/department",name:"departmentmain",component:DepartmentMain},
+	{path:"/login",name:"login",component:AdminLogin}
 	
 ]
 

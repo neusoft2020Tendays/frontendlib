@@ -20,15 +20,13 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${departmentList}" var="dm">
-						<tr>
-							<td>${dm.deptid}</td>
-							<td>${dm.name }</td>
-							<td><a href="tomodify${dm.no}.mvc" class="btn btn-default">修改</a>
-								<a href="todelete.mvc?no=${dm.no}" class="btn btn-danger">删除</a>
-								<a href="toview.mvc?no=${dm.no}" class="btn btn-default">查看</a> </td>
-						</tr>
-					</c:forEach>
+					<tr v-for="department in departmentList" v-bind:key="department.deptid">
+						<td>{{department.deptid }}</td>
+						<td>{{department.name }}</td>
+						<td><a href="tomodify${dm.no}.mvc" class="btn btn-default">修改</a>
+							<a href="todelete.mvc?no=${dm.no}" class="btn btn-danger">删除</a>
+							<a href="toview.mvc?no=${dm.no}" class="btn btn-default">查看</a> </td>
+					</tr>
 				</tbody>
 			</table>
 		</div>
@@ -38,10 +36,35 @@
 </template>
 
 <script>
+	import axios from "axios";
 	export default {
 		name: "DepartmentMain",
 		data() {
+			return {
+				departmentList: [],
+				page: 1,
+				rows: 5,
+				count: 0,
+				pageCount: 0,
 
+			};
+		},
+		created() { // 当前组件的生命周期方法
+			this.getList();
+		},
+		methods: {
+			getList() {
+				axios.get("http://localhost:8100/department/list/all/page", {
+					params: {
+						rows: this.rows,
+						page: this.page
+					}
+				}).then(result => {
+					this.departmentList = result.data.list;
+					this.count = result.data.count;
+					this.pageCount = result.data.pageCount;
+				});
+			}
 		}
 	}
 </script>
