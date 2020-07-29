@@ -7,11 +7,11 @@ import axios from "axios"
 // import 'element-ui/lib/theme-chalk/index.css';
 
 const axiosJSON = axios.create({
-	baseURL: 'http://localhost:8100',
-	timeout: 1000
+	baseURL: 'http://localhost:8200',
+	timeout: 2000
 });
 const axiosUpload = axios.create({
-	baseURL: 'http://localhost:8100',
+	baseURL: 'http://localhost:8200',
 	timeout: 3000,
 	headers: {'Content-Type': 'multipart/form-data'}
 });

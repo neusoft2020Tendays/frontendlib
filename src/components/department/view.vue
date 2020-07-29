@@ -51,10 +51,12 @@
 				this.axiosJSON.get("/department/get?id=" + deptid).then(result => {
 					this.department = result.data.result;
 				});
+			},
+			countNumByDepartment(deptid) {
+				this.axiosJSON.get("/employee/getCountByDepartment?deptid=" + deptid).then(result => {
+					this.num = result.data.result;
+				})
 			}
-			// countNumByDepartment(deptid) {
-			// 	axios.get
-			// }
 		}
 	}
 </script>
