@@ -2,27 +2,20 @@
 	<div class="box">
 		<div class="box-header with-border">
 			<h3 class="box-title">增加部门</h3>
-
-			<div class="box-tools pull-right">
-				<button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-					<i class="fa fa-minus"></i></button>
-				<button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-					<i class="fa fa-times"></i></button>
-			</div>
 		</div>
 		<div class="box-body">
-			<form action="add.mvc" method="post">
+			<form method="post" v-on:submit.prevent="add()">
 				<div class="form-group">
 					<label for="exampleInputEmail1">部门编号</label>
-					<input type="text" class="form-control" name="code">
+					<input type="text" class="form-control" v-model="department.deptid" required>
 					<small id="emailHelp" class="form-text text-muted"></small>
 				</div>
 				<div class="form-group">
 					<label for="exampleInputPassword1">部门名称</label>
-					<input type="text" class="form-control" name="name">
+					<input type="text" class="form-control" v-model="department.name" required>
 				</div>
 				<button type="submit" class="btn btn-primary">提交</button>
-				<a href="tolist.do" class="btn btn-default">取消</a>
+				<router-link to="/department/list" class="btn btn-default">取消</router-link>
 			</form>
 
 		</div>
@@ -34,8 +27,26 @@
 	export default {
 		name: "DepartmentAdd",
 		data() {
-
+			return {
+				department: {
+					deptid: "",
+					name: ""
+				}
+			};
+		},
+		methods: {
+			add() {
+				this.axiosJSON.post("/department/add", this.department).then(result => {
+					if (result.data.status == "OK") {
+						alert(result.data.message);
+						this.$router.push("/department/list");	// 编程方式跳转
+					} else {
+						alert(result.data.message);
+					}
+				});
+			}
 		}
+
 	}
 </script>
 

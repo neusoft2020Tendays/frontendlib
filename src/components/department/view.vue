@@ -2,28 +2,28 @@
 	<div class="box">
 		<div class="box-header with-border">
 			<h3 class="box-title">查看部门</h3>
-
-			<div class="box-tools pull-right">
-				<button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-					<i class="fa fa-minus"></i></button>
-				<button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-					<i class="fa fa-times"></i></button>
-			</div>
 		</div>
 		<div class="box-body">
-			<form>
+			<form method="post">
 				<div class="form-group">
-					<label for="exampleInputEmail1">部门编号</label>
-					<span>${dm.code}</span>
-
+					<div class="row" style="font-size: 20px;">
+						<label class="col-md-2">部门编号</label>
+						<span class="col-md-4">{{$route.params.deptid}}</span>
+					</div>
 				</div>
 				<div class="form-group">
-					<label for="exampleInputPassword1">部门名称</label>
-					<span>${dm.name}</span>
+					<div class="row" style="font-size: 20px;">
+						<label class="col-md-2">部门名称</label>
+						<span class="col-md-4">{{department.name}}</span>
+					</div>
 				</div>
-
-				<a href="tolist.do" class="btn btn-default">返回</a>
-
+				<div class="form-group">
+					<div class="row" style="font-size: 20px;">
+						<label class="col-md-2">部门人数</label>
+						<span class="col-md-4">{{num}}</span>
+					</div>
+				</div>
+				<router-link to="/department/list" class="btn btn-default">返回</router-link>
 			</form>
 		</div>
 		<!-- /.box-body -->
@@ -34,7 +34,27 @@
 	export default {
 		name: "DepartmentView",
 		data() {
-
+			return {
+				department: {
+					deptid: "",
+					name: ""
+				},
+				num: 0
+			};
+		},
+		created() {
+			let deptid = this.$route.params.deptid;
+			this.getDepartment(deptid);
+		},
+		methods: {
+			getDepartment(deptid) {
+				this.axiosJSON.get("/department/get?id=" + deptid).then(result => {
+					this.department = result.data.result;
+				});
+			}
+			// countNumByDepartment(deptid) {
+			// 	axios.get
+			// }
 		}
 	}
 </script>

@@ -4,9 +4,9 @@
 			<!-- Logo -->
 			<a href="../../index2.html" class="logo">
 				<!-- mini logo for sidebar mini 50x50 pixels -->
-				<span class="logo-mini"><b>A</b>LT</span>
+				<span class="logo-mini"><b></b></span>
 				<!-- logo for regular state and mobile devices -->
-				<span class="logo-lg"><b>Admin</b>LTE</span>
+				<span class="logo-lg"><b>十天疗养院</b></span>
 			</a>
 			<!-- Header Navbar: style can be found in header.less -->
 			<nav class="navbar navbar-static-top">
@@ -17,8 +17,6 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</a>
-
-
 			</nav>
 		</header>
 
@@ -37,17 +35,6 @@
 						<router-link to="/login"><i class="fa fa-circle text-success"></i> 登录</router-link>
 					</div>
 				</div>
-				<!-- search form -->
-				<form action="#" method="get" class="sidebar-form">
-					<div class="input-group">
-						<input type="text" name="q" class="form-control" placeholder="Search...">
-						<span class="input-group-btn">
-							<button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-							</button>
-						</span>
-					</div>
-				</form>
-				<!-- /.search form -->
 				<!-- sidebar menu: : style can be found in sidebar.less -->
 				<ul class="sidebar-menu" data-widget="tree">
 					<li class="header">系统功能选择</li>
@@ -172,7 +159,9 @@
 					<small>子功能</small>
 				</h1>
 				<ol class="breadcrumb">
-					<li><router-link to="/"><i class="fa fa-dashboard"></i>首页</router-link></li>
+					<li>
+						<router-link to="/"><i class="fa fa-dashboard"></i>首页</router-link>
+					</li>
 				</ol>
 			</section>
 
@@ -189,6 +178,13 @@
 			<!-- /.content -->
 		</div>
 		<!-- /.content-wrapper -->
+		<footer class="main-footer">
+			<div class="pull-right hidden-xs">
+				<b>Version</b> 1.0
+			</div>
+			<strong>Copyright &copy; 2020-2020 <a href="https://adminlte.io">2020暑期东软实训第21组</a>.</strong> All rights
+			reserved.
+		</footer>
 		<!-- Add the sidebar's background. This div must be placed
          immediately after the control sidebar -->
 		<div class="control-sidebar-bg"></div>

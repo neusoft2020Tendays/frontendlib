@@ -22,7 +22,7 @@
 					<span>${dm.name}</span>
 				</div>
 				<button type="submit" class="btn btn-primary">提交</button>
-				<a href="tolist.do" class="btn btn-default">取消</a>
+				<router-link to="/department/list" class="btn btn-default">取消</router-link>
 				<input type="hidden" name="no" value="${dm.no}" />
 			</form>
 
@@ -33,9 +33,9 @@
 
 <script>
 	export default {
-		name:"DepartmentDelete",
+		name: "DepartmentDelete",
 		data() {
-			reutrn {};
+			return {};
 		}
 	}
 </script>
