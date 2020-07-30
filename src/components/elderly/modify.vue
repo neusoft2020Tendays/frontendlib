@@ -122,10 +122,17 @@
 					this.elderly = result.data.result;
 				});
 				console.log(this.elderly);
+<<<<<<< HEAD
 			},
 			changePhoto(event){ //图片选择的处理
 				this.elderlyPhoto=event.target.files[0];			
 			},
+=======
+			},
+			changePhoto(event){ //图片选择的处理
+				this.elderlyPhoto=event.target.files[0];			
+			},
+>>>>>>> 231c1154d238552469384ed61ec8bf05d8ebc997
 			submitModify() {
 				let formData = new FormData();
 				console.log(this.elderly);
@@ -136,6 +143,10 @@
 				formData.append("floor", this.elderly.floor);
 				formData.append("room", this.elderly.room);
 				formData.append("bed", this.elderly.bed);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 231c1154d238552469384ed61ec8bf05d8ebc997
 				formData.append("elderlyPhoto", this.elderlyPhoto);
 				console.log(this.elderlyPhoto);
 				this.axiosUpload.post("/elderly/modify", formData).then(result => {
