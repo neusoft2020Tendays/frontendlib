@@ -16,6 +16,11 @@ const axiosUpload = axios.create({
 	timeout: 3000,
 	headers: {'Content-Type': 'multipart/form-data'}
 });
+// const axiosForm = axios.create({
+//   baseURL: 'http://localhost:8200/',
+//   timeout: 2000,
+//   headers:{"Content-Type":"x-www-form-urlencoded"}
+// });
 
 // 把Axios的对象注册到Vue对象上
 // 挂载到Vue的原型上
