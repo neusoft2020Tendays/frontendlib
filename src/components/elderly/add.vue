@@ -22,13 +22,13 @@
 						<label for="exampleInputPassword1">年龄</label>
 						<input type="number" class="form-control" v-model="elderly.elderage">
 					</div>
-					<div class="form-group col-md-1">
+					<div class="form-group col-md-2">
 						<label for="exampleInputPassword1">楼层</label>
 						<select v-model="elderly.floor" class="form-control" v-on:change="updateRoom()">
 							<option v-for="floor in floorList" v-bind:value="floor" v-bind:key="floor">{{floor}}</option>
 						</select>
 					</div>
-					<div class="form-group col-md-1">
+					<div class="form-group col-md-2">
 						<label for="exampleInputPassword1">房间</label>
 						<select v-model="elderly.room" class="form-control" v-on:change="updateBed()">
 							<option v-for="room in roomList" v-bind:value="room" v-bind:key="room">{{room}}</option>
