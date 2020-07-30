@@ -7,14 +7,18 @@
 			<table class="table table-bordered">
 				<thead>
 					<tr>
-						<th scope="col">编号</th>
-						<th scope="col">时间</th>
+						<th scope="col">货物编号</th>
+						<th scope="col">货物名称</th>
+						<th scope="col">货物价格</th>
+						<th scope="col">消耗时间</th>
 						<th scope="col">消耗量</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr v-for="consume in consumeList" v-bind:key="consume.id+consume.date">
 						<td>{{consume.id }}</td>
+						<td>{{consume.goods.name }}</td>
+						<td>{{consume.goods.price }}</td>
 						<td>{{consume.date }}</td>
 						<td>{{consume.amount }}</td>
 						<td>
@@ -49,7 +53,7 @@
 		},
 		methods: {
 			getList() {
-				this.axiosJSON.get("/consume/listAllPage", {
+				this.axiosJSON.get("/consume/listPageWithGoods", {
 					params: {
 						rows: this.rows,
 						page: this.page

@@ -11,7 +11,7 @@
 				</div>
 				<div class="form-group">
 					<label for="exampleInputPassword1">时间</label>
-					<input type="text" class="form-control" v-model="consume.date" required>
+					<input type="datetime" class="form-control" v-model="consume.date" required>
 				</div>
 				<div class="form-group">
 					<label for="exampleInputPassword1">消耗量</label>

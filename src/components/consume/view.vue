@@ -13,7 +13,19 @@
 				</div>
 				<div class="form-group">
 					<div class="row" style="font-size: 20px;">
-						<label class="col-md-2">时间</label>
+						<label class="col-md-2">货物名称</label>
+						<span class="col-md-4">{{consume.goods.name}}</span>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row" style="font-size: 20px;">
+						<label class="col-md-2">货物价格</label>
+						<span class="col-md-4">{{consume.goods.price}}</span>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="row" style="font-size: 20px;">
+						<label class="col-md-2">消耗时间</label>
 						<span class="col-md-4">{{$route.params.date}}</span>
 					</div>
 				</div>
@@ -38,26 +50,28 @@
 				consume: {
 					id: "",
 					date: "",
-					amount:""
+					amount:"",
+					goods:{
+						id:"",
+						name:"",
+						price:""
+					}
 				},
 			};
 		},
 		created() {
 			let id = this.$route.params.id;
 			let date = this.$route.params.date;
-			console.log(id);
-			console.log(date);
 			this.getConsume(id, date);
 		},
 		methods: {
 			getConsume(id, date) {
-				this.axiosJSON.get("/consume/get", {
+				this.axiosJSON.get("/consume/getWithGoods", {
 					params:{
 						id:id,
 						date:date
 					}
 				}).then(result => {
-					console.log(result)
 					this.consume = result.data.result;
 				});
 			}
