@@ -40,20 +40,11 @@
 					<li class="header">系统功能选择</li>
 					<li class="treeview">
 						<a href="#">
-							<i class="fa fa-dashboard"></i> <span>房间管理</span>
-							<span class="pull-right-container">
-								<i class="fa fa-angle-left pull-right"></i>
-							</span>
-						</a>
-					</li>
-					<li class="treeview">
-						<a href="#">
 							<i class="fa fa-dashboard"></i> <span>床位管理</span>
 							<span class="pull-right-container">
 								<i class="fa fa-angle-left pull-right"></i>
 							</span>
 						</a>
-
 					</li>
 					<li class="treeview">
 						<router-link to="/elderly">
@@ -80,12 +71,12 @@
 						</a>
 					</li>
 					<li class="treeview">
-						<a href="#">
+						<router-link to="/employee/list">
 							<i class="fa fa-dashboard"></i> <span>员工管理</span>
 							<span class="pull-right-container">
 								<i class="fa fa-angle-left pull-right"></i>
 							</span>
-						</a>
+						</router-link>
 					</li>
 					<li class="treeview">
 						<a href="#">
@@ -136,12 +127,12 @@
 						</router-link>
 					</li>
 					<li class="treeview">
-						<a href="#">
+						<router-link to="/consume">
 							<i class="fa fa-dashboard"></i> <span>货物使用信息</span>
 							<span class="pull-right-container">
 								<i class="fa fa-angle-left pull-right"></i>
 							</span>
-						</a>
+						</router-link>
 					</li>
 				</ul>
 			</section>

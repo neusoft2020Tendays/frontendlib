@@ -16,7 +16,7 @@
 					</div>
 					<div class="form-group col-md-3">
 						<label for="exampleInputPassword1">购买数量</label>
-						<input type="text" class="form-control" v-model="purchase.puramount">
+						<input type="number" class="form-control" v-model="purchase.puramount">
 					</div>
 				</div>
 				<div>
@@ -38,12 +38,13 @@
 				purchase: {
 					goodsid: "",
 					date: "",
-					puramount: ""
+					puramount: 0
 				}
 			};
 		},
 		methods: {
 			add() {
+				console.log(this.purchase);
 				this.axiosJSON.post("/purchase/add", this.purchase).then(result => {
 					if (result.data.status == "OK") {
 						alert(result.data.message);

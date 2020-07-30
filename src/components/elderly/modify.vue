@@ -5,33 +5,35 @@
 		</div>
 		<div class="box-body">
 			<form method="post" v-on:submit.prevent="modify()">
-				<div class="form-group">
-					<label for="exampleInputEmail1">老人编号</label>
-					<input type="text" class="form-control" v-model="$route.params.elderlyid"  readonly="readonly">
-				</div>
-				<div class="form-group">
-					<label for="exampleInputPassword1">姓名</label>
-					<input type="text" class="form-control" v-model="elderly.eldername" autofocus="true">
-				</div>
-				<div class="form-group">
-					<label for="exampleInputPassword1">性别</label>
-					<input type="text" class="form-control" v-model="elderly.eldersex">
-				</div>
-				<div class="form-group">
-					<label for="exampleInputPassword1">年龄</label>
-					<input type="number" class="form-control" v-model="elderly.elderage">
-				</div>
-				<div class="form-group">
-					<label for="exampleInputPassword1">楼层</label>
-					<input type="text" class="form-control" v-model="elderly.floor">
-				</div>
-				<div class="form-group">
-					<label for="exampleInputPassword1">房间</label>
-					<input type="text" class="form-control" v-model="elderly.room">
-				</div>
-				<div class="form-group">
-					<label for="exampleInputPassword1">床位</label>
-					<input type="text" class="form-control" v-model="elderly.bed">
+				<div class="row">
+					<div class="form-group col-md-2">
+						<label for="exampleInputEmail1">老人编号</label>
+						<input type="text" class="form-control" v-model="$route.params.elderlyid" readonly="readonly">
+					</div>
+					<div class="form-group col-md-2">
+						<label for="exampleInputPassword1">姓名</label>
+						<input type="text" class="form-control" v-model="elderly.eldername" autofocus="true">
+					</div>
+					<div class="form-group col-md-1">
+						<label for="exampleInputPassword1">性别</label>
+						<input type="text" class="form-control" v-model="elderly.eldersex">
+					</div>
+					<div class="form-group col-md-1">
+						<label for="exampleInputPassword1">年龄</label>
+						<input type="number" class="form-control" v-model="elderly.elderage">
+					</div>
+					<div class="form-group col-md-1">
+						<label for="exampleInputPassword1">楼层</label>
+						<input type="text" class="form-control" v-model="elderly.floor">
+					</div>
+					<div class="form-group col-md-1">
+						<label for="exampleInputPassword1">房间</label>
+						<input type="text" class="form-control" v-model="elderly.room">
+					</div>
+					<div class="form-group col-md-1">
+						<label for="exampleInputPassword1">床位</label>
+						<input type="text" class="form-control" v-model="elderly.bed">
+					</div>
 				</div>
 				<button type="submit" class="btn btn-primary">提交</button>
 				<router-link to="/elderly/list" class="btn btn-default">取消</router-link>
@@ -53,7 +55,7 @@
 					eldersex: "",
 					elderage: "",
 					floor: "",
-					room: "",								
+					room: "",
 					bed: ""
 				}
 			};
@@ -64,7 +66,7 @@
 		},
 		methods: {
 			getElderly(elderlyid) {
-				this.axiosJSON.get("/elderlyi/get?id=" + elderlyid).then(result => {
+				this.axiosJSON.get("/elderly/get?id=" + elderlyid).then(result => {
 					this.elderly = result.data.result;
 				});
 			},

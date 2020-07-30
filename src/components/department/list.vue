@@ -27,7 +27,27 @@
 		</div>
 		<!-- /.box-body -->
 		<router-link to="/department/add" class="btn btn-default">增加新部门</router-link>
+		<nav aria-label="Page navigation" style="text-align: center;">
+			<ul class="pagination">
+				<li>
+					<a href="#" aria-label="Previous">
+						<span aria-hidden="true">&laquo;</span>
+					</a>
+				</li>
+				<li><a href="javascript:;" onclick="freshPage(0);getList();">{{startpage}}</a></li>
+				<li><a href="javascript:;" onclick="freshPage(1);getList();">{{startpage + 1}}</a></li>
+				<li><a href="javascript:;" onclick="freshPage(2);getList();">{{startpage + 2}}</a></li>
+				<li><a href="javascript:;" onclick="freshPage(3);getList();">{{startpage + 3}}</a></li>
+				<li><a href="javascript:;" onclick="freshPage(4);getList();">{{startpage + 4}}</a></li>
+				<li>
+					<a href="#" aria-label="Next">
+						<span aria-hidden="true">&raquo;</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
 	</div>
+
 </template>
 
 <script>
@@ -40,14 +60,25 @@
 				rows: 5,
 				count: 0,
 				pageCount: 0,
-
+				startpage: 1
 			};
 		},
 		created() { // 当前组件的生命周期方法
 			this.getList();
+			this.startpage = this.page < 3 ? 1 : this.page - 2;
+		},
+		mounted() {
+			window.freshPage = this.freshPage;
+			window.getList = this.getList;
 		},
 		methods: {
+			freshPage(s) {
+				this.page = this.startpage + s;
+				this.startpage = this.page < 3 ? 1 : this.page - 2;
+			},
 			getList() {
+				// console.log(this.rows);
+				// console.log(this.page);
 				this.axiosJSON.get("/department/list/all/page", {
 					params: {
 						rows: this.rows,
