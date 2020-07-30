@@ -33,8 +33,8 @@
 					<div class="pull-left info">
 						<p v-if="loginuser != null">{{loginuser.name}}</p>
 						<p v-else>未登录</p>
-						<router-link v-if="loginuser == null" to="/login"><i class="fa fa-circle text-success"></i>登录</router-link>
-						<router-link v-else to="/login"><i class="fa fa-circle text-success"></i>注销</router-link>
+						<router-link v-if="loginuser == null" to="/admin/login"><i class="fa fa-circle text-success"></i>登录</router-link>
+						<router-link v-else to="/admin/login"><i class="fa fa-circle text-success"></i>注销</router-link>
 					</div>
 				</div>
 				<!-- sidebar menu: : style can be found in sidebar.less -->
@@ -203,7 +203,6 @@
 		},
 		computed:{
 			loginuser(){
-				
 				return this.$store.getters.loginuser;
 			}
 		}

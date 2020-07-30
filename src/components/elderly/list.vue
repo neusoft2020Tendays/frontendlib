@@ -58,6 +58,7 @@
 						<td>
 							<router-link v-bind:to="'/elderly/modify/' + elderly.elderlyid" class="btn btn-default">修改</router-link>
 							<a href="#" v-on:click="deleteElderly(elderly.elderlyid)" class="btn btn-danger">删除</a>
+							<router-link v-bind:to="'/elderly/view/' + elderly.elderlyid" class="btn btn-default">详细信息</router-link>
 							<router-link v-bind:to="'/elderly/cost/' + elderly.elderlyid" class="btn btn-default">账单记录</router-link>
 						</td>
 					</tr>

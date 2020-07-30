@@ -6,7 +6,7 @@
 
 <script>
 	export default {
-		name: "ConsumeMain",
+		name: "AdminMain",
 		data() {
 			return {
 			};

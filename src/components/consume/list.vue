@@ -59,7 +59,7 @@
 						page: this.page
 					}
 				}).then(result => {
-					// console.log(result)
+					console.log(result)
 					this.consumeList = result.data.list;
 					this.count = result.data.count;
 					this.pageCount = result.data.pageCount;

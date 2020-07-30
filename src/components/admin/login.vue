@@ -25,8 +25,16 @@
 				</div>
 			</form>
 			<!-- /.social-auth-links -->
-			<a href="#">忘记密码</a><br>
-			<a href="register.html" class="text-center">注册新用户</a>
+			
+			
+			<div class="box-body">
+				<div class="form-group col-md-6">
+					<a href="#" class="btn btn-primary">忘记密码</a><br>
+				</div>
+				<div class="form-group col-md-6">
+					<router-link to='add' class="btn btn-primary">注册新用户</router-link>
+				</div>
+			</div>
 
 		</div>
 		<!-- /.login-box-body -->

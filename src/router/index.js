@@ -2,11 +2,13 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import store from './../store/index'
-
 // 引入路由管理的组件
 // 首页区组件
 import HomeMain from "./../components/home/main.vue"
 import AdminLogin from "./../components/admin/login.vue"
+import AdminMain from "./../components/admin/main.vue"
+import AdminAdd from "./../components/admin/add.vue"
+
 import DepartmentMain from "./../components/department/main.vue"
 import DepartmentList from "./../components/department/list.vue"
 import DepartmentAdd from "./../components/department/add.vue"
@@ -76,9 +78,25 @@ const routes = [{
 		]
 	},
 	{
-		path: "/login",
-		name: "login",
-		component: AdminLogin
+		path: "/admin",
+		name: "adminmain",
+		component: AdminMain,
+		children: [
+			{
+				path: "login",
+				name: "login",
+				component: AdminLogin
+			},
+			{
+				path: "add",
+				name: "adduser",
+				component: AdminAdd
+			},
+			{
+				path: "",
+				redirect: "login"
+			}
+		]
 	},
 	{
 		path: "/elderly",
@@ -134,7 +152,7 @@ const routes = [{
 				name: "purchasemodify",
 				component: PurchaseModify
 			},
-			
+
 			{
 				path: "",
 				redirect: "list"
@@ -211,17 +229,16 @@ const router = new VueRouter({
 })
 
 // 路由守护实现登录拦截
-router.beforeEach((to,from,next)=>{
+router.beforeEach((to, from, next) => {
 	// to:目标路由
 	// from：当前路由
-	
-	if(to.path=="/login"){
+	if (to.path == "/admin/login" || to.path == "/admin/add") {
 		next();
-	}else{
-		if(store.getters.loginuser != null){
+	} else {
+		if (store.getters.loginuser != null) {
 			next();
-		}else{
-			next("/login");
+		} else {
+			next("/admin");
 		}
 	}
 })
