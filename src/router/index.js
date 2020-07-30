@@ -12,20 +12,20 @@ import DepartmentList from "./../components/department/list.vue"
 import DepartmentAdd from "./../components/department/add.vue"
 import DepartmentModify from "./../components/department/modify.vue"
 import DepartmentView from "./../components/department/view.vue"
+
 import ElderlyMain from "./../components/elderly/main.vue"
 import ElderlyList from "./../components/elderly/list.vue"
 import ElderlyAdd from "./../components/elderly/add.vue"
 import ElderlyModify from "./../components/elderly/modify.vue"
 import ElderlyCost from "./../components/elderly/cost.vue"
-<<<<<<< HEAD
-=======
 import ElderlyView from "./../components/elderly/view.vue"
+
 import EmployeeMain from "./../components/employee/main.vue"
 import EmployeeList from "./../components/employee/list.vue"
 import EmployeeAdd from "./../components/employee/add.vue"
 import EmployeeModify from "./../components/employee/modify.vue"
 import EmployeeView from "./../components/employee/view.vue"
->>>>>>> 1a30482674513362e7e690db9a2e494b75042bf7
+
 import PurchaseMain from "./../components/purchase/main.vue"
 import PurchaseList from "./../components/purchase/list.vue"
 import PurchaseAdd from "./../components/purchase/add.vue"
@@ -37,12 +37,6 @@ import ConsumeList from "./../components/consume/list.vue"
 import ConsumeAdd from "./../components/consume/add.vue"
 import ConsumeModify from "./../components/consume/modify.vue"
 import ConsumeView from "./../components/consume/view.vue"
-
-import EmployeeMain from "./../components/employee/main.vue"
-import EmployeeList from "./../components/employee/list.vue"
-import EmployeeAdd from "./../components/employee/add.vue"
-import EmployeeModify from "./../components/employee/modify.vue"
-import EmployeeView from "./../components/employee/view.vue"
 
 Vue.use(VueRouter)
 
