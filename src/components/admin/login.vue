@@ -7,13 +7,13 @@
 		<div class="login-box-body">
 			<p class="login-box-msg">请输入登录信息</p>
 
-			<form action="login.mvc" method="post">
+			<form method="post" v-on:submit.prevent="userLogin">
 				<div class="form-group has-feedback">
-					<input type="text" class="form-control" required name="userid" placeholder="账号">
+					<input type="text" class="form-control" required v-model="userid" placeholder="账号">
 					<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
 				</div>
 				<div class="form-group has-feedback">
-					<input type="password" class="form-control" required name="password" placeholder="密码">
+					<input type="password" class="form-control" required v-model="password" placeholder="密码">
 					<span class="glyphicon glyphicon-lock form-control-feedback"></span>
 				</div>
 				<div class="row">
@@ -38,7 +38,38 @@
 	export default {
 		name: "AdminLogin",
 		data() {
-			return {};
+			return {
+				userid:"",
+				password:"",
+			};
+		},
+		created() {
+			this.$store.dispatch("logoutUser")
+		},
+		methods:{
+			userLogin(){
+				this.axiosJSON.get("/user/validate", {
+					params:{
+						id:this.userid,
+						password:this.password
+					}
+				}).then(result=>{
+					// console.log(result);
+					if(result.data.stringResult=="Yes"){
+						// console.log("1")
+						// 存储用户登陆对象
+						this.$store.dispatch("loginUser",result.data.result)
+						// console.log("2")
+						this.$router.push("/");
+						// localStorage.setItem("","");
+						console.log(this.$store.getters.loginuser);
+					}else{
+						this.userid = "";
+						this.password = "";
+						alert(result.data.message);
+					}
+				});
+			},
 		}
 	}
 </script>
