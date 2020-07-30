@@ -31,14 +31,12 @@
 						<img src="./assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 					</div>
 					<div class="pull-left info">
-						<p v-if="loginuser != null">{{loginuser.name}}</p>
-						<p v-else>未登录</p>
-						<router-link v-if="loginuser == null" to="/admin/login"><i class="fa fa-circle text-success"></i>登录</router-link>
-						<router-link v-else to="/admin/login"><i class="fa fa-circle text-success"></i>注销</router-link>
+						<p>管理员</p>
+						<router-link to="/login"><i class="fa fa-circle text-success"></i> 登录</router-link>
 					</div>
 				</div>
 				<!-- sidebar menu: : style can be found in sidebar.less -->
-				<ul v-if="loginuser != null" class="sidebar-menu" data-widget="tree">
+				<ul class="sidebar-menu" data-widget="tree">
 					<li class="header">系统功能选择</li>
 					<li class="treeview">
 						<a href="#">
@@ -73,7 +71,7 @@
 						</a>
 					</li>
 					<li class="treeview">
-						<router-link to="/employee">
+						<router-link to="/employee/list">
 							<i class="fa fa-dashboard"></i> <span>员工管理</span>
 							<span class="pull-right-container">
 								<i class="fa fa-angle-left pull-right"></i>
@@ -105,12 +103,12 @@
 						</a>
 					</li>
 					<li class="treeview">
-						<a href="#">
+						<router-link to="/goods">
 							<i class="fa fa-dashboard"></i> <span>货物管理</span>
 							<span class="pull-right-container">
 								<i class="fa fa-angle-left pull-right"></i>
 							</span>
-						</a>
+						</router-link>
 					</li>
 					<li class="treeview">
 						<a href="#">
@@ -183,23 +181,6 @@
 		<div class="control-sidebar-bg"></div>
 	</div>
 </template>
-
-<script>
-	export default {
-		name:"App",
-		data(){
-			return {
-				
-			}
-		},
-		computed:{
-			loginuser(){
-				return this.$store.getters.loginuser;
-			}
-		}
-	}
-	
-</script>
 
 <style>
 	@import url("./assets/bower_components/bootstrap/dist/css/bootstrap.min.css");

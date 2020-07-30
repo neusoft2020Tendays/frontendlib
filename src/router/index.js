@@ -40,6 +40,12 @@ import ConsumeAdd from "./../components/consume/add.vue"
 import ConsumeModify from "./../components/consume/modify.vue"
 import ConsumeView from "./../components/consume/view.vue"
 
+import GoodsMain from "./../components/goods/main.vue"
+import GoodsList from "./../components/goods/list.vue"
+import GoodsAdd from "./../components/goods/add.vue"
+import GoodsModify from "./../components/goods/modify.vue"
+import GoodsView from "./../components/goods/view.vue"
+
 Vue.use(VueRouter)
 
 const routes = [{
@@ -219,7 +225,36 @@ const routes = [{
 			}
 		]
 	},
-
+	{
+		path: "/goods",
+		name: "goodsmain",
+		component: GoodsMain,
+		children: [{
+				path: "list",
+				name: "goodslist",
+				component: GoodsList
+			},
+			{
+				path: "add",
+				name: "goodsadd",
+				component: GoodsAdd
+			},
+			{
+				path: "modify/:deptid",
+				name: "goodsmodify",
+				component: GoodsModify
+			},
+			{
+				path: "view/:deptid",
+				name: "goodsview",
+				component: GoodsView
+			},
+			{
+				path: "",
+				redirect: "list"
+			}
+		]
+	},
 ]
 
 const router = new VueRouter({
