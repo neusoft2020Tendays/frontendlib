@@ -3,6 +3,35 @@
 		<div class="box-header with-border">
 			<h3 class="box-title">老人管理</h3>
 		</div>
+		<div class="row">
+			<div class="form-group col-md-1"></div>
+			<div class="form-group col-md-1">
+				<label for="inputEmail4">年龄从</label>
+				<input type="number" class="form-control" v-model="minAge" v-on:change="getListByCondition">
+			</div>
+			<div class="form-group col-md-1">
+				<label for="inputEmail4">年龄至</label>
+				<input type="number" class="form-control" v-model="maxAge" v-on:change="getListByCondition">
+			</div>
+			<div class="form-group col-md-2">
+				<label for="inputPassword4">楼层</label>
+				<select class="form-control" v-model="floor"  v-on:change="updateRoom(), getListByCondition()">
+					<option value="所有楼层">所有楼层</option>
+					<option v-for="floor in floorList" v-bind:key="floor" v-bind:value="floor">{{floor}}</option>
+				</select>
+			</div>
+			<div class="form-group col-md-2">
+				<label for="inputPassword4">房间</label>
+				<select class="form-control" v-model="room" v-on:change="getListByCondition">
+					<option value="所有房间">所有房间</option>
+					<option v-for="room in roomList" v-bind:key="room" v-bind:value="room">{{room}}</option>
+				</select>
+			</div>
+			<div class="form-group col-md-2">
+				<label for="inputPassword4">姓名检索</label>
+				<input type="text" class="form-control" v-model="nameKey" v-on:change="getListByCondition">
+			</div>
+		</div>
 		<div class="box-body">
 			<table class="table table-bordered">
 				<thead>
@@ -14,7 +43,7 @@
 						<th scope="col">楼层</th>
 						<th scope="col">房间号</th>
 						<th scope="col">床位号</th>
-						<th scope="col">操作</th>						
+						<th scope="col">操作</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -64,17 +93,25 @@
 		name: "ElderlyList",
 		data() {
 			return {
-				elderlyList:[],
+				elderlyList: [],
+				floorList: [],
+				roomList: [],
 				page: 1,
 				rows: 5,
 				count: 0,
 				pageCount: 0,
-				startpage: 0
+				startpage: 0,
+				minAge: 0,
+				maxAge: 0,
+				nameKey: "",
+				floor: "",
+				room: ""
 			};
 		},
 		created() { // 当前组件的生命周期方法
 			this.getList();
 			this.startpage = this.page < 3 ? 1 : this.page - 2;
+			this.getFloorList();
 		},
 		mounted() {
 			window.freshPage = this.freshPage;
@@ -95,6 +132,44 @@
 					this.elderlyList = result.data.list;
 					this.count = result.data.count;
 					this.pageCount = result.data.pageCount;
+				});
+			},
+			getFloorList() {
+				this.axiosJSON.get("/ward/floor").then(result => {
+					this.floorList = result.data.list;
+					this.count = result.data.count;
+					this.pageCount = result.data.pageCount;
+				});
+			},
+			updateRoom() {
+				console.log("测试");
+				this.axiosJSON.get("/ward/room", {
+					params: {
+						floor: this.floor
+					}
+				}).then(result => {
+					this.roomList = result.data.list;
+					this.count = result.data.count;
+					this.pageCount = result.data.pageCount;
+				});
+			},
+			getListByCondition() {
+				this.axiosJSON.get("/elderly/list/condition/page", {
+					params: {
+						rows: this.rows,
+						page: this.page,
+						minAge: this.minAge,
+						maxAge: this.maxAge,
+						floor: this.floor,
+						room: this.room,
+						nameKey: this.nameKey
+					}
+				}).then(result => {
+					if (result.data.status == "OK") {
+						this.elderlyList = result.data.list;
+						this.count = result.data.count;
+						this.pageCount = result.data.pageCount;
+					}
 				});
 			},
 			deleteElderly(elderlyid) {
