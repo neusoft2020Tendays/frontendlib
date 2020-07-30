@@ -15,7 +15,7 @@
 			</div>
 			<div class="form-group col-md-2">
 				<label for="inputPassword4">楼层</label>
-				<select class="form-control" v-model="floor"  v-on:change="updateRoom(), getListByCondition()">
+				<select class="form-control" v-model="floor" v-on:change="updateRoom(), getListByCondition()">
 					<option value="所有楼层">所有楼层</option>
 					<option v-for="floor in floorList" v-bind:key="floor" v-bind:value="floor">{{floor}}</option>
 				</select>
@@ -43,6 +43,7 @@
 						<th scope="col">楼层</th>
 						<th scope="col">房间号</th>
 						<th scope="col">床位号</th>
+						<th scope="col">照片</th>
 						<th scope="col">操作</th>
 					</tr>
 				</thead>
@@ -58,7 +59,9 @@
 						<td>
 							<router-link v-bind:to="'/elderly/modify/' + elderly.elderlyid" class="btn btn-default">修改</router-link>
 							<a href="#" v-on:click="deleteElderly(elderly.elderlyid)" class="btn btn-danger">删除</a>
-							<router-link v-bind:to="'/elderly/cost/' + elderly.elderlyid" class="btn btn-default">账单记录</router-link>
+							<router-link v-bind:to="'/elderly/view/' + elderly.elderlyid" class="btn btn-default">详细信息</router-link>
+							<router-link v-bind:to="'/elderly/cost/' + elderly.elderlyid" class="btn btn-default">账单</router-link>
+
 						</td>
 					</tr>
 				</tbody>

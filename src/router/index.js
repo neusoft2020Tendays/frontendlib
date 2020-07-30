@@ -20,6 +20,7 @@ import ElderlyList from "./../components/elderly/list.vue"
 import ElderlyAdd from "./../components/elderly/add.vue"
 import ElderlyModify from "./../components/elderly/modify.vue"
 import ElderlyCost from "./../components/elderly/cost.vue"
+import ElderlyView from "./../components/elderly/view.vue"
 import EmployeeMain from "./../components/employee/main.vue"
 import EmployeeList from "./../components/employee/list.vue"
 import EmployeeAdd from "./../components/employee/add.vue"
@@ -126,6 +127,11 @@ const routes = [{
 				path: "cost/:elderlyid",
 				name: "elderlycost",
 				component: ElderlyCost
+			},
+			{
+				path: "view/:elderlyid",
+				name: "elderlyview",
+				component: ElderlyView
 			},
 			{
 				path: "",
