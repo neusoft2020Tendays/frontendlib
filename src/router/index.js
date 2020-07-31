@@ -40,11 +40,36 @@ import ConsumeAdd from "./../components/consume/add.vue"
 import ConsumeModify from "./../components/consume/modify.vue"
 import ConsumeView from "./../components/consume/view.vue"
 
-// import GoodsMain from "./../components/goods/main.vue"
-// import GoodsList from "./../components/goods/list.vue"
-// import GoodsAdd from "./../components/goods/add.vue"
-// import GoodsModify from "./../components/goods/modify.vue"
-// import GoodsView from "./../components/goods/view.vue"
+import GoodsMain from "./../components/goods/main.vue"
+import GoodsList from "./../components/goods/list.vue"
+import GoodsAdd from "./../components/goods/add.vue"
+import GoodsModify from "./../components/goods/modify.vue"
+import GoodsView from "./../components/goods/view.vue"
+
+import WarehouseMain from "./../components/warehouse/main.vue"
+import WarehouseList from "./../components/warehouse/list.vue"
+import WarehouseAdd from "./../components/warehouse/add.vue"
+import WarehouseModify from "./../components/warehouse/modify.vue"
+import WarehouseView from "./../components/warehouse/view.vue"
+
+import SalaryMain from "./../components/salary/main.vue"
+import SalaryList from "./../components/salary/list.vue"
+import SalaryAdd from "./../components/salary/add.vue"
+import SalaryModify from "./../components/salary/modify.vue"
+import SalaryView from "./../components/salary/view.vue"
+
+import WardMain from "./../components/ward/main.vue"
+import WardList from "./../components/ward/list.vue"
+import WardAdd from "./../components/ward/add.vue"
+import RoomList from "./../components/ward/roomlist.vue"
+import CostMain from "./../components/cost/main.vue"
+import CostAdd from "./../components/cost/add.vue"
+import CostList from "./../components/cost/list.vue"
+import CostModify from "./../components/cost/modify.vue"
+import GuestMain from "./../components/guest/main.vue"
+import GuestModify from "./../components/guest/modify.vue"
+import GuestList from "./../components/guest/list.vue"
+import GuestAdd from "./../components/guest/add.vue"
 
 Vue.use(VueRouter)
 
@@ -87,8 +112,7 @@ const routes = [{
 		path: "/admin",
 		name: "adminmain",
 		component: AdminMain,
-		children: [
-			{
+		children: [{
 				path: "login",
 				name: "login",
 				component: AdminLogin
@@ -225,36 +249,168 @@ const routes = [{
 			}
 		]
 	},
-	// {
-	// 	path: "/goods",
-	// 	name: "goodsmain",
-	// 	component: GoodsMain,
-	// 	children: [{
-	// 			path: "list",
-	// 			name: "goodslist",
-	// 			component: GoodsList
-	// 		},
-	// 		{
-	// 			path: "add",
-	// 			name: "goodsadd",
-	// 			component: GoodsAdd
-	// 		},
-	// 		{
-	// 			path: "modify/:deptid",
-	// 			name: "goodsmodify",
-	// 			component: GoodsModify
-	// 		},
-	// 		{
-	// 			path: "view/:deptid",
-	// 			name: "goodsview",
-	// 			component: GoodsView
-	// 		},
-	// 		{
-	// 			path: "",
-	// 			redirect: "list"
-	// 		}
-	// 	]
-	// },
+	{
+		path: "/goods",
+		name: "goodsmain",
+		component: GoodsMain,
+		children: [{
+				path: "list",
+				name: "goodslist",
+				component: GoodsList
+			},
+			{
+				path: "add",
+				name: "goodsadd",
+				component: GoodsAdd
+			},
+			{
+				path: "modify/:id",
+				name: "goodsmodify",
+				component: GoodsModify
+			},
+			{
+				path: "view/:id",
+				name: "goodsview",
+				component: GoodsView
+			},
+			{
+				path: "",
+				redirect: "list"
+			}
+		]
+	},
+	{
+		path: "/warehouse",
+		name: "warehousemain",
+		component: WarehouseMain,
+		children: [{
+				path: "list",
+				name: "warehouselist",
+				component: WarehouseList
+			},
+			{
+				path: "add",
+				name: "warehouseadd",
+				component: WarehouseAdd
+			},
+			{
+				path: "modify/:warehouseid",
+				name: "warehousemodify",
+				component: WarehouseModify
+			},
+			{
+				path: "view/:warehouseid",
+				name: "warehouseview",
+				component: WarehouseView
+			},
+			{
+				path: "",
+				redirect: "list"
+			}
+		]
+	},
+	{
+		path: "/salary",
+		name: "salarymain",
+		component: SalaryMain,
+		children: [{
+				path: "list",
+				name: "salarylist",
+				component: SalaryList
+			},
+			{
+				path: "add",
+				name: "salaryadd",
+				component: SalaryAdd
+			},
+			{
+				path: "modify/:salaryId",
+				name: "salarymodify",
+				component: SalaryModify
+			},
+			{
+				path: "view/:salaryId",
+				name: "salaryview",
+				component: SalaryView
+			},
+			{
+				path: "",
+				redirect: "list"
+			}
+		]
+	},
+	{
+		path: "/ward",
+		name: "wardmain",
+		component: WardMain,
+		children: [{
+				path: "list",
+				name: "wardlist",
+				component: WardList
+			}, {
+				path: "add",
+				name: "wardadd",
+				component: WardAdd
+			},
+			{
+				path: "roomlist",
+				name: "roomlist",
+				component: RoomList
+			},
+			{
+				path: "",
+				redirect: "list"
+			}
+		]
+	}, {
+		path: "/cost",
+		name: "costmain",
+		component: CostMain,
+		children: [{
+				path: "list",
+				name: "costlist",
+				component: CostList
+			}, {
+				path: "add",
+				name: "wardadd",
+				component: CostAdd
+			},
+			{
+				path: "",
+				redirect: "list"
+			},
+			{
+				path: "modify/:costid",
+				name: "costmodify",
+				component: CostModify
+			}
+
+		]
+	}, {
+		path: "/guest",
+		name: "guestmain",
+		component: GuestMain,
+		children: [{
+				path: "list",
+				name: "guestlist",
+				component: GuestList
+			}, {
+				path: "guest",
+				name: "guestadd",
+				component: GuestAdd
+			},
+			{
+				path: "",
+				redirect: "list"
+			},
+			{
+				path: "modify/:guestid",
+				name: "guestmodify",
+				component: GuestModify
+			}
+
+		]
+	}
 ]
 
 const router = new VueRouter({

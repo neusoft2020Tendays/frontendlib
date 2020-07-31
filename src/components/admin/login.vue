@@ -60,7 +60,8 @@
 					params:{
 						id:this.userid,
 						password:this.password
-					}
+					},
+					
 				}).then(result=>{
 					// console.log(result);
 					if(result.data.stringResult=="Yes"){

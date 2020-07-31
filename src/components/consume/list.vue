@@ -29,6 +29,17 @@
 					</tr>
 				</tbody>
 			</table>
+			<div class="pageInfoShow" style="float:left">
+				<span>当前页数:{{page}},总页数:{{pageCount}}</span>
+			</div>
+			<div class="page" style="float:right">
+				<td>
+					<div v-on:click="firstPage" class="btn btn-default">首页</div>
+					<div v-on:click="prePage" class="btn btn-primary">上一页</div>
+					<div v-on:click="nextPage" class="btn btn-primary">下一页</div>
+					<div v-on:click="lastPage" class="btn btn-default">尾页</div>
+				</td>
+			</div>
 		</div>
 		<!-- /.box-body -->
 		<router-link to="/consume/add" class="btn btn-default">增加货物消耗单</router-link>
@@ -78,6 +89,32 @@
 						}
 					});
 				}
+			},
+			firstPage() {
+				this.page = 1;
+				this.getList();
+			},
+			prePage() {
+				let cur = this.page - 1;
+				if (cur < 1) {
+					alert("当前已是首页");
+				} else {
+					this.page = cur;
+					this.getList();
+				}
+			},
+			nextPage() {
+				let cur = this.page + 1;
+				if (cur > this.pageCount) {
+					alert("当前已是最后一页");
+				} else {
+					this.page = cur;
+					this.getList();
+				}
+			},
+			lastPage() {
+				this.page = this.pageCount;
+				this.getList();
 			}
 		}
 	}

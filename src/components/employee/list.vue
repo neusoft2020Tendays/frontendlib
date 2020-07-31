@@ -47,7 +47,7 @@
 				<input type="checkbox" v-model="leave" value="是" id="cb1">
 			</div>
 			<div class="form-group col-md-2">
-				<button type="submit" class="btn btn-primary" v-on:click="getList">提交</button>
+				<button type="submit" class="btn btn-primary" v-on:click="make(), getList()">提交</button>
 			</div>
 
 
@@ -117,7 +117,7 @@
 				rows: 5,
 				count: 0,
 				pageCount: 0,
-
+				flag: true
 			};
 		},
 		created() { // 当前组件的生命周期方法
@@ -125,8 +125,19 @@
 			this.getAllDept();
 		},
 		methods: {
+			make(){
+				console.log(-1);
+				this.flag = false;
+			},
 			getList() {
-				console.log(this.sex.length);
+				// console.log(0);
+				if(!this.flag){
+					console.log(1);
+					this.rows = 5;
+					this.page = 1;
+				}
+				this.flag = true;
+				// console.log(2);
 				let cursex = "";
 				let curFired = "否";
 				let curLeave = "否";

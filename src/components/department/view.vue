@@ -45,6 +45,7 @@
 		created() {
 			let deptid = this.$route.params.deptid;
 			this.getDepartment(deptid);
+			this.countNumByDepartment(deptid);
 		},
 		methods: {
 			getDepartment(deptid) {
@@ -53,9 +54,11 @@
 				});
 			},
 			countNumByDepartment(deptid) {
+				console.log(deptid);
 				this.axiosJSON.get("/employee/getCountByDepartment?deptid=" + deptid).then(result => {
-					this.num = result.data.result;
-				})
+					this.num = result.data.intResult;
+				});
+				console.log(this.num);
 			}
 		}
 	}
